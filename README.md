@@ -47,11 +47,10 @@
 
 🧱 Headless UI & Lucide – Accessible components & icons
 
-
-
 ---
 
 ### What you get
+
 - ✨ Two apps: `apps/admin` (internal dashboard) & `apps/site` (public website).
 - 🔐 Auth with roles: `admin`, `teacher`, `student`.
 - 🧾 Student registration & class enrollment flows out of the box.
@@ -75,6 +74,7 @@ nexed/
 ├─ supabase/    # SQL migrations, policies
 └─ turbo.json
 ```
+
 ---
 
 ## 📌 Roadmap
@@ -97,5 +97,6 @@ Contributions are warmly welcomed!
 Feel free to fork this repo, create a feature branch, and submit a pull request.
 
 ---
+
 🌻Developed by
 Azadeh Sharifi Soltani
