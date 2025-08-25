@@ -13,6 +13,8 @@
   "dependencies": {
     "@adonisjs/lucid": "^21.8.0",
     "@reduxjs/toolkit": "^2.8.2",
+    "@supabase/auth-helpers-nextjs": "^0.10.0",
+    "@supabase/supabase-js": "^2.56.0",
     "clsx": "^2.1.1",
     "next": "15.5.0",
     "prettier": "^3.6.2",
