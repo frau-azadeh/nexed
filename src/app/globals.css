@@ -1,26 +1,48 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --font-sans: "Vazir", ui-sans-serif, system-ui, sans-serif;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@theme {
+  /* Brand */
+  --color-primary: #2f855a;
+  --color-primary-hover: #276b4b;
+
+  /* Accent (Yellow) */
+  --color-accent: #ffd400;
+  --color-accent-hover: #e6b800;
+
+  /* Surfaces */
+  /* Background (Very Lighet Yellow) */
+  --color-background: #f5ffeb;
+  --color-surface: #ffffff;
+  --color-muted: #f7f8f5;
+
+  /* Text & Border */
+  --color-text: #1f2937;
+  --color-text-muted: #6b7280;
+  --color-border: #e5e7eb;
+
+  /* Focus ring */
+  --color-ring: #2f855a;
+
+  /* Button */
+  --color-primary: #2f855a;
+  --color-primary-hover: #276b4b;
+
+  --color-success: #22c55e;
+  --color-success-hover: #16a34a;
+
+  --color-danger: #e11d48;
+  --color-danger-hover: #be123c;
+
+  /* outline  */
+  --color-outline-hover: #e9f5ef;
+
+  /* muted */
+  --color-muted-200: #e5e7eb; /* bg/border */
+  --color-muted-400: #9ca3af; /* text */
 }
