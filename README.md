@@ -21,6 +21,10 @@
   <a href="https://zod.dev/">
     <img src="https://img.shields.io/badge/Zod-Validation-2A2A2A?logo=zod&logoColor=white" alt="Zod" />
   </a>
+  <a href="https://redux.js.org/">
+  <img src="https://img.shields.io/badge/Redux-State_Management-764ABC?logo=redux&logoColor=white" alt="Redux" />
+</a>
+
 </p>
 
 ---
@@ -28,11 +32,22 @@
 ## Overview
 
 **NexEd** is a production-ready starter for building a **School Admin Panel** and a **Public School Website** with a unified stack:
-- **Next.js 15** app-router, server actions, and RSC.
-- **Supabase** for Postgres, Auth (email/magic links), Row Level Security, and Realtime.
-- **TypeScript** everywhere.
-- **Tailwind CSS** for rapid UI.
-- **React Hook Form + Zod** for robust, type-safe forms and validation.
+
+⚛️ React (TypeScript) – Component-based UI development
+
+💨 Tailwind CSS – Utility-first styling framework
+
+🧩 React Hook Form + Zod – Form state management and schema validation
+
+🎯 Redux Toolkit – Global state with local persistence
+
+🧼 Prettier – Code formatting and consistency
+
+🐘 Supabase – Postgres DB, Auth, (optional Storage)
+
+🧱 Headless UI & Lucide – Accessible components & icons
+
+
 
 ---
 
