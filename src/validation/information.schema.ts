@@ -8,7 +8,7 @@ export const InformationSchema = z.object({
     .string({ required_error: "نام خانوادگی الزامی است" })
     .min(2, "نام خانوادگی باید حداقل 2 کاراکتر باشد"),
   maeitalStatus: z.enum(["single", "married", "divorces"]),
-  genderL: z.enum(["male","female"]),
+  genderL: z.enum(["male", "female"]),
   fatherName: z.string().min(2, "نام پدر باید حداقل 2 کاراکتر باشد").optional(),
 });
 
