@@ -11,6 +11,7 @@ import Select from "../ui/Select";
 import Input from "../ui/Input";
 import TextArea from "../ui/TextArea";
 import Button from "../ui/Button";
+import toast from "react-hot-toast";
 
 const degreeOptions = [
   { label: "دیپلم", value: "diploma" },
@@ -25,16 +26,24 @@ const EducationForm = () => {
   const {
     register,
     handleSubmit,
+
     formState: { errors, isSubmitting },
   } = useForm<EducationFormValue>({
     resolver: zodResolver(EducationSchema),
     mode: "onTouched",
   });
 
+  const submitRequest = (data: EducationFormValue) =>
+    new Promise<EducationFormValue>((resolve) => {
+      setTimeout(() => resolve(data), 800);
+    });
+
   const onSubmit = async (data: EducationFormValue) => {
-    await new Promise((r) => setTimeout(r, 800));
-    console.log("education submit", data);
-    alert("اطلاعات تحصیلی ثبت شد");
+    await toast.promise(submitRequest(data), {
+      loading: "در حال ارسال…",
+      success: "اطلاعات تحصیلی با موفقیت ثبت شد",
+      error: "ارسال اطلاعات ناموفق بود",
+    });
   };
 
   return (
@@ -103,13 +112,13 @@ const EducationForm = () => {
               )}
             </div>
             <TextArea
-                id="description"
-                label="توضیحات"
-                rows={4}
-                placeholder="توضیحات تکمیلی ..."
-                error={errors.description}
-                className="md:col-span-2 border border-gray-300"
-                helperText="حداکثر 500 کاراکتر"
+              id="description"
+              label="توضیحات"
+              rows={4}
+              placeholder="توضیحات تکمیلی ..."
+              error={errors.description}
+              className="md:col-span-2 border border-gray-300"
+              helperText="حداکثر 500 کاراکتر"
             />
           </div>
           <Button
@@ -119,7 +128,7 @@ const EducationForm = () => {
             loading={isSubmitting}
           >
             {isSubmitting ? "ثبت" : "در حال ثبت ..."}
-            </Button>
+          </Button>
         </div>
       </div>
     </form>
