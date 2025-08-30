@@ -6,17 +6,20 @@ export const InformationSchema = z.object({
   firstName: z
     .string({ required_error: "نام الزامی است" })
     .regex(persianRegex, "فقط حروف فارسی مجاز است")
+    .trim()
     .min(2, "نام باید حداقل 2 کاراکتر باشد"),
   lastName: z
     .string({ required_error: "نام خانوادگی الزامی است" })
     .regex(persianRegex, "فقط حروف فارسی مجاز است")
+    .trim()
     .min(2, "نام خانوادگی باید حداقل 2 کاراکتر باشد"),
-  maeitalStatus: z.enum(["single", "married", "divorces"]),
+  maeitalStatus: z.enum(["single", "married", "divorced"]),
   genderL: z.enum(["male", "female"]),
   fatherName: z
     .string()
     .min(2, "نام پدر باید حداقل 2 کاراکتر باشد")
     .regex(persianRegex, "فقط حروف فارسی مجاز است")
+    .trim()
     .optional(),
 });
 
