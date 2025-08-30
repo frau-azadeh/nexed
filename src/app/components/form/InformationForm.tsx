@@ -4,7 +4,7 @@ import {
   InformationSchema,
 } from "@/validation/information.schema";
 import React from "react";
-import { FieldErrors, useForm } from "react-hook-form";
+import {  useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Input from "../ui/Input";
 import Select from "../ui/Select";
