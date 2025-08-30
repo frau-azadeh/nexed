@@ -4,11 +4,13 @@ import {
   InformationSchema,
 } from "@/validation/information.schema";
 import React from "react";
-import { useForm } from "react-hook-form";
+import { FieldErrors, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Input from "../ui/Input";
 import Select from "../ui/Select";
 import Button from "../ui/Button";
+import toast from "react-hot-toast";
+
 
 const maritalOptions = [
   { label: "مجرد", value: "single" },
@@ -31,12 +33,22 @@ export default function InformationForm() {
     mode: "onTouched",
   });
 
-  const onSubmit = async (data: informationFormValue) => {
-    // شبیه‌سازی تاخیر
-    await new Promise((r) => setTimeout(r, 600));
-    console.log("submit", data);
-    alert("اطلاعات با موفقیت ثبت شد");
-  };
+
+  const submitRequest = (data: informationFormValue) =>
+    new Promise<informationFormValue>((resolve) => {
+      setTimeout(() => resolve(data), 800);
+    });
+
+
+const onSubmit = async (data: informationFormValue)=> {
+    await toast.promise(submitRequest(data),{
+        loading:"در حال ارسال",
+        success:"اطلاعات با موفقیت ارسال شد",
+        error:"ارسال اطلاعات ناموفق بود",
+    })
+}
+
+
 
   return (
     <form
@@ -44,7 +56,7 @@ export default function InformationForm() {
       dir="rtl"
       className="mx-auto mt-8 max-w-2xl"
     >
-      <div className="rounded-2xl  bg-white/80 p-6 shadow-sm backdrop-blur">
+      <div className="rounded-2xl  bg-white/80 p-6 shadow-sm backdrop-blur m-2">
         {/* Header */}
         <div className="mb-6 border-b pb-4 border-gray-500">
           <h2 className="text-xl font-bold text-gray-900">فرم اطلاعات فردی</h2>
@@ -54,7 +66,7 @@ export default function InformationForm() {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div className="grid grid-cols-1  gap-4 md:grid-cols-2">
           <Input
             id="firstName"
             label="نام"
@@ -111,6 +123,7 @@ export default function InformationForm() {
           >
             {isSubmitting ? "در حال ثبت…" : "ثبت"}
           </Button>
+         
         </div>
       </div>
     </form>
