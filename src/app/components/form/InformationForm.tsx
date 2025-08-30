@@ -4,13 +4,12 @@ import {
   InformationSchema,
 } from "@/validation/information.schema";
 import React from "react";
-import {  useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Input from "../ui/Input";
 import Select from "../ui/Select";
 import Button from "../ui/Button";
 import toast from "react-hot-toast";
-
 
 const maritalOptions = [
   { label: "مجرد", value: "single" },
@@ -33,22 +32,18 @@ export default function InformationForm() {
     mode: "onTouched",
   });
 
-
   const submitRequest = (data: informationFormValue) =>
     new Promise<informationFormValue>((resolve) => {
       setTimeout(() => resolve(data), 800);
     });
 
-
-const onSubmit = async (data: informationFormValue)=> {
-    await toast.promise(submitRequest(data),{
-        loading:"در حال ارسال",
-        success:"اطلاعات با موفقیت ارسال شد",
-        error:"ارسال اطلاعات ناموفق بود",
-    })
-}
-
-
+  const onSubmit = async (data: informationFormValue) => {
+    await toast.promise(submitRequest(data), {
+      loading: "در حال ارسال",
+      success: "اطلاعات با موفقیت ارسال شد",
+      error: "ارسال اطلاعات ناموفق بود",
+    });
+  };
 
   return (
     <form
@@ -123,7 +118,6 @@ const onSubmit = async (data: informationFormValue)=> {
           >
             {isSubmitting ? "در حال ثبت…" : "ثبت"}
           </Button>
-         
         </div>
       </div>
     </form>
