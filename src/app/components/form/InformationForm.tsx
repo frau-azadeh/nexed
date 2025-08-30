@@ -88,7 +88,7 @@ export default function InformationForm() {
             options={maritalOptions}
             defaultValue=""
             {...register("maeitalStatus")}
-            error={errors.maeitalStatus }
+            error={errors.maeitalStatus}
           />
 
           <Input
