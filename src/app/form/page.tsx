@@ -7,7 +7,7 @@ export default function FormInformation() {
     <div>
       <InformationForm />
       <EducationForm />
-      <JobForm/>
+      <JobForm />
     </div>
   );
 }
