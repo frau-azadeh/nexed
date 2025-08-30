@@ -109,7 +109,7 @@ export default function InformationForm() {
         </div>
 
         {/* Footer Actions */}
-        <div className="mt-6 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+      
           <Button
             type="submit"
             variant="primary"
@@ -118,7 +118,7 @@ export default function InformationForm() {
           >
             {isSubmitting ? "در حال ثبت…" : "ثبت"}
           </Button>
-        </div>
+   
       </div>
     </form>
   );
