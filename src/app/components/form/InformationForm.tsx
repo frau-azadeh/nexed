@@ -26,7 +26,6 @@ export default function InformationForm() {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-    reset,
   } = useForm<informationFormValue>({
     resolver: zodResolver(InformationSchema),
     mode: "onTouched",
@@ -79,7 +78,7 @@ export default function InformationForm() {
             options={genderOption}
             defaultValue=""
             {...register("gender")}
-            error={errors.gender as any}
+            error={errors.gender}
           />
 
           <Select
@@ -89,7 +88,7 @@ export default function InformationForm() {
             options={maritalOptions}
             defaultValue=""
             {...register("maeitalStatus")}
-            error={errors.maeitalStatus as any}
+            error={errors.maeitalStatus }
           />
 
           <Input

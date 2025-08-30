@@ -10,7 +10,7 @@ interface Option {
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   label?: string;
   options: Option[];
-  error?: string | FieldError;
+  error?: string | FieldError | null;
   helperText?: string;
   placeholder?: string;
 }
