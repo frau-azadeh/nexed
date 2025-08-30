@@ -109,16 +109,15 @@ export default function InformationForm() {
         </div>
 
         {/* Footer Actions */}
-      
-          <Button
-            type="submit"
-            variant="primary"
-            size="md"
-            loading={isSubmitting}
-          >
-            {isSubmitting ? "در حال ثبت…" : "ثبت"}
-          </Button>
-   
+
+        <Button
+          type="submit"
+          variant="primary"
+          size="md"
+          loading={isSubmitting}
+        >
+          {isSubmitting ? "در حال ثبت…" : "ثبت"}
+        </Button>
       </div>
     </form>
   );
