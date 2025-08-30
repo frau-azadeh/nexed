@@ -1,5 +1,8 @@
 "use client";
-import { type informationFormValue, InformationSchema } from "@/validation/information.schema";
+import {
+  type informationFormValue,
+  InformationSchema,
+} from "@/validation/information.schema";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -101,11 +104,14 @@ export default function InformationForm() {
 
         {/* Footer Actions */}
         <div className="mt-6 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
-          <Button type="submit" variant="primary" size="md" loading={isSubmitting}>
+          <Button
+            type="submit"
+            variant="primary"
+            size="md"
+            loading={isSubmitting}
+          >
             {isSubmitting ? "در حال ثبت…" : "ثبت"}
           </Button>
-
-         
         </div>
       </div>
     </form>
