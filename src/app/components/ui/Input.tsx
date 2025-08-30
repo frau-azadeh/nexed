@@ -1,3 +1,4 @@
+"use client"
 import clsx from "clsx";
 import { Eye, EyeOff } from "lucide-react";
 import React, { forwardRef, InputHTMLAttributes, useState } from "react";
