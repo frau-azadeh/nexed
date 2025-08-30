@@ -8,6 +8,7 @@ import Input from '../ui/Input'
 import Select from '../ui/Select'
 import TextArea from '../ui/TextArea'
 import Button from '../ui/Button'
+import toast from 'react-hot-toast'
 
 const employmentOptions = [
   { label: "تمام‌وقت", value: "full_time" },
@@ -28,10 +29,18 @@ const JobForm = () => {
         mode:"onTouched"
     })
 
+    const submitRequest = (data: JobFormValue)=>
+        new Promise<JobFormValue>((resolve)=>{
+            setTimeout(()=> resolve(data),800)
+        })
+
     const onSubmit = async (data:JobFormValue)=>{
-         await new Promise((r) => setTimeout(r, 700));
-    console.log("job submit:", data);
-    alert("سابقهٔ شغلی ثبت شد");
+        await toast.promise( submitRequest(data),{
+   loading: "در حال ارسال…",
+      success: "اطلاعات تحصیلی با موفقیت ثبت شد",
+      error: "ارسال اطلاعات ناموفق بود",
+        })
+
     }
   return (
 <form onSubmit={handleSubmit(onSubmit)}
@@ -92,7 +101,7 @@ className='mx-auto mt-8 max-w-2xl'
     id="description"
     label='شرح وظایف'
     helperText='حداکثر 500 کاراکتر'
-    placeholder='شرح وظایف را به صورت خلاصهوارد کنید'
+    placeholder='شرح وظایف را به صورت خلاصه وارد کنید'
     rows={4}
     {...register("description")}
     error={errors.description}
