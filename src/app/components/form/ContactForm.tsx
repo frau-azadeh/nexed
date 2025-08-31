@@ -3,7 +3,7 @@
 import { ContactFormValue, ContactSchema } from "@/validation/contact.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import toast from "react-hot-toast";
 import Input from "../ui/Input";
 import Select from "../ui/Select";
@@ -19,6 +19,7 @@ const topicOptions = [
 
 const ContactForm = () => {
   const {
+    watch,
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
@@ -26,6 +27,10 @@ const ContactForm = () => {
     resolver: zodResolver(ContactSchema),
     mode: "onTouched",
   });
+
+  const fullName = watch("fullName");
+  const topic = watch("topic");
+  const message = watch("message");
 
   const submitRequest = (data: ContactFormValue) =>
     new Promise<ContactFormValue>((resolve) => {
@@ -39,6 +44,8 @@ const ContactForm = () => {
       error: "ارسال اطلاعات ناموفق بود",
     });
   };
+
+  const topicLabel = topicOptions.find((t) => t.value === topic)?.label ?? "-";
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="mx-auto mt-8 max-w-2xl">
       <div className="rounded-2xl bg-white/80 p-6 shadow-md backdrop-blur">
@@ -48,6 +55,20 @@ const ContactForm = () => {
             لطفاً اطلاعات تماس و پیام خود را وارد کنید.
           </p>
         </div>
+
+        <div className="mb-5 rounded-lg border border-gray-200 bg-gray-50/60 p-4 text-sm text-gray-700">
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
+            <div>
+              <span className="text-gray-500">نام فرستنده:</span>{" "}
+              {fullName || "—"}
+            </div>
+            <div>
+              <span className="text-gray-500">موضوع:</span> {topicLabel}
+            </div>
+             <div><span className="text-gray-500">طول پیام:</span> {message.length}/500</div>
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <Input
             id="fullName"
