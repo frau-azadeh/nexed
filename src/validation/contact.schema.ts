@@ -39,10 +39,7 @@ export const ContactSchema = z.object({
     .trim()
     .min(10, "حداقل 10 کاراکتر")
     .max(500, "حداکثر 500 کاراکتر"),
-    sendCopy: z
-    .boolean()
-    .optional()
-    .default(false),
+  sendCopy: z.boolean().optional().default(false),
 });
 
 export type ContactFormValue = z.infer<typeof ContactSchema>;

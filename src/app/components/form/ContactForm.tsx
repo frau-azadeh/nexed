@@ -28,14 +28,14 @@ const ContactForm = () => {
   } = useForm<ContactFormValue>({
     resolver: zodResolver(ContactSchema),
     mode: "onTouched",
-    defaultValues:{
+    defaultValues: {
       sendCopy: false,
-    }
+    },
   });
 
-  const fullName = watch("fullName")?? "";
-  const topic = watch("topic")?? "";
-  const message = watch("message")?? "";
+  const fullName = watch("fullName") ?? "";
+  const topic = watch("topic") ?? "";
+  const message = watch("message") ?? "";
 
   const submitRequest = (data: ContactFormValue) =>
     new Promise<ContactFormValue>((resolve) => {
@@ -70,7 +70,10 @@ const ContactForm = () => {
             <div>
               <span className="text-gray-500">موضوع:</span> {topicLabel}
             </div>
-             <div><span className="text-gray-500">طول پیام:</span>{message?.length}/500</div>
+            <div>
+              <span className="text-gray-500">طول پیام:</span>
+              {message?.length}/500
+            </div>
           </div>
         </div>
 
@@ -135,10 +138,10 @@ const ContactForm = () => {
           <Controller
             name="sendCopy"
             control={control}
-            render={({field})=>(
+            render={({ field }) => (
               <Toggle
                 checked={Boolean(field.value)}
-                onChange={(v)=>field.onChange(v)}
+                onChange={(v) => field.onChange(v)}
                 label="یک نسخه از پیام برای من ایمیل شود"
               />
             )}
