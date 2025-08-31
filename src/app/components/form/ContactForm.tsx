@@ -24,7 +24,7 @@ const ContactForm = () => {
     control,
     register,
     handleSubmit,
-    trigger,                        // 👈 اضافه شد
+    trigger, // 👈 اضافه شد
     formState: { errors, isSubmitting, isSubmitSuccessful },
   } = useForm<ContactFormValue>({
     resolver: zodResolver(ContactSchema),
@@ -38,8 +38,8 @@ const ContactForm = () => {
   });
 
   const fullName = watch("fullName") ?? "";
-  const topic     = watch("topic") ?? "";
-  const message   = watch("message") ?? "";
+  const topic = watch("topic") ?? "";
+  const message = watch("message") ?? "";
 
   // ❷ اعتبارسنجی شرطی: اگر موضوع «پشتیبانی» شد، عنوان را دوباره چک کن
   useEffect(() => {
@@ -67,21 +67,35 @@ const ContactForm = () => {
   };
 
   const topicLabel = topicOptions.find((t) => t.value === topic)?.label ?? "-";
-const emailReg = register("email");
+  const emailReg = register("email");
   return (
-    <form onSubmit={handleSubmit(onSubmit, onError)} className="mx-auto mt-8 max-w-2xl" dir="rtl">
+    <form
+      onSubmit={handleSubmit(onSubmit, onError)}
+      className="mx-auto mt-8 max-w-2xl"
+      dir="rtl"
+    >
       <div className="rounded-2xl bg-white/80 p-6 shadow-md backdrop-blur">
         <div className="mb-6 border-b border-gray-200 pb-4">
           <h2 className="text-xl font-bold text-gray-900">فرم تماس</h2>
-          <p className="mt-1 text-sm text-gray-600">لطفاً اطلاعات تماس و پیام خود را وارد کنید.</p>
+          <p className="mt-1 text-sm text-gray-600">
+            لطفاً اطلاعات تماس و پیام خود را وارد کنید.
+          </p>
         </div>
 
         {/* Preview با watch */}
         <div className="mb-5 rounded-lg border border-gray-200 bg-gray-50/60 p-4 text-sm text-gray-700">
           <div className="flex flex-wrap gap-x-6 gap-y-2">
-            <div><span className="text-gray-500">نام فرستنده:</span> {fullName || "—"}</div>
-            <div><span className="text-gray-500">موضوع:</span> {topicLabel}</div>
-            <div><span className="text-gray-500">طول پیام:</span> {message.length}/500</div>
+            <div>
+              <span className="text-gray-500">نام فرستنده:</span>{" "}
+              {fullName || "—"}
+            </div>
+            <div>
+              <span className="text-gray-500">موضوع:</span> {topicLabel}
+            </div>
+            <div>
+              <span className="text-gray-500">طول پیام:</span> {message.length}
+              /500
+            </div>
           </div>
         </div>
 
@@ -97,24 +111,26 @@ const emailReg = register("email");
           {/* ❶ بررسی دستی ایمیل با trigger روی دکمهٔ کنار ورودی */}
           <div className="flex items-end gap-2 md:col-span-1">
             <div className="flex-1">
-             <Input
-  id="email"
-  label="ایمیل"
-  placeholder="ایمیل خود را وارد کنید"
-  {...emailReg}
-  onBlur={async (e) => {
-    emailReg.onBlur(e);          // اول onBlur اصلی RHF
-    await trigger("email");      // بعد trigger دستی
-  }}
-  error={errors.email}
-/>
+              <Input
+                id="email"
+                label="ایمیل"
+                placeholder="ایمیل خود را وارد کنید"
+                {...emailReg}
+                onBlur={async (e) => {
+                  emailReg.onBlur(e); // اول onBlur اصلی RHF
+                  await trigger("email"); // بعد trigger دستی
+                }}
+                error={errors.email}
+              />
             </div>
             <Button
               type="button"
               variant="outline"
               onClick={async () => {
                 const ok = await trigger("email");
-                toast[ok ? "success" : "error"](ok ? "ایمیل معتبر است" : "ایمیل نامعتبر است");
+                toast[ok ? "success" : "error"](
+                  ok ? "ایمیل معتبر است" : "ایمیل نامعتبر است",
+                );
               }}
             >
               بررسی ایمیل
@@ -173,7 +189,9 @@ const emailReg = register("email");
               />
             )}
           />
-          {errors.sendCopy && <p className="text-xs text-red-600">{errors.sendCopy.message}</p>}
+          {errors.sendCopy && (
+            <p className="text-xs text-red-600">{errors.sendCopy.message}</p>
+          )}
         </div>
 
         {/* دکمه‌هایی برای trigger نمونه‌ای */}
@@ -184,13 +202,20 @@ const emailReg = register("email");
             onClick={async () => {
               // چند فیلد مهم را یکجا چک کن
               const ok = await trigger(["fullName", "email", "message"]);
-              toast[ok ? "success" : "error"](ok ? "موارد اصلی معتبر هستند" : "برخی فیلدها نامعتبرند");
+              toast[ok ? "success" : "error"](
+                ok ? "موارد اصلی معتبر هستند" : "برخی فیلدها نامعتبرند",
+              );
             }}
           >
             بررسی سریع
           </Button>
 
-          <Button type="submit" variant="primary" size="md" loading={isSubmitting}>
+          <Button
+            type="submit"
+            variant="primary"
+            size="md"
+            loading={isSubmitting}
+          >
             {isSubmitting ? "در حال ارسال ..." : "ارسال"}
           </Button>
 
