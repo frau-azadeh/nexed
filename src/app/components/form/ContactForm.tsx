@@ -3,12 +3,13 @@
 import { ContactFormValue, ContactSchema } from "@/validation/contact.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
-import { useForm, useWatch } from "react-hook-form";
+import { Controller, useForm, useWatch } from "react-hook-form";
 import toast from "react-hot-toast";
 import Input from "../ui/Input";
 import Select from "../ui/Select";
 import TextArea from "../ui/TextArea";
 import Button from "../ui/Button";
+import Toggle from "../ui/Toggle";
 
 const topicOptions = [
   { label: "پشتیبانی", value: "support" },
@@ -20,17 +21,21 @@ const topicOptions = [
 const ContactForm = () => {
   const {
     watch,
+    control,
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<ContactFormValue>({
     resolver: zodResolver(ContactSchema),
     mode: "onTouched",
+    defaultValues:{
+      sendCopy: false,
+    }
   });
 
-  const fullName = watch("fullName");
-  const topic = watch("topic");
-  const message = watch("message");
+  const fullName = watch("fullName")?? "";
+  const topic = watch("topic")?? "";
+  const message = watch("message")?? "";
 
   const submitRequest = (data: ContactFormValue) =>
     new Promise<ContactFormValue>((resolve) => {
@@ -65,7 +70,7 @@ const ContactForm = () => {
             <div>
               <span className="text-gray-500">موضوع:</span> {topicLabel}
             </div>
-             <div><span className="text-gray-500">طول پیام:</span> {message.length}/500</div>
+             <div><span className="text-gray-500">طول پیام:</span>{message?.length}/500</div>
           </div>
         </div>
 
@@ -123,6 +128,20 @@ const ContactForm = () => {
             error={errors.message}
             className="md:col-span-2"
             helperText="حداکثر ۵۰۰ کاراکتر"
+          />
+        </div>
+
+        <div>
+          <Controller
+            name="sendCopy"
+            control={control}
+            render={({field})=>(
+              <Toggle
+                checked={Boolean(field.value)}
+                onChange={(v)=>field.onChange(v)}
+                label="یک نسخه از پیام برای من ایمیل شود"
+              />
+            )}
           />
         </div>
         <Button
