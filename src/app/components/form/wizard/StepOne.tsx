@@ -11,7 +11,11 @@ import toast from "react-hot-toast";
 import Input from "../../ui/Input";
 import Button from "../../ui/Button";
 
-const StepOne = () => {
+type Props = {
+    onNext?: (data: StepOneFormValue) => void
+}
+
+const StepOne: React.FC<Props> = ({onNext}) => {
   const {
     register,
     handleSubmit,
@@ -35,7 +39,19 @@ const StepOne = () => {
       success: "مرحله اول ذخیره شد",
       error: "اتصال برقرار نشد",
     });
+    onNext?.(data)
   };
+
+const validateAndNext = async ()=>{
+    const ok = await trigger();
+    if(!ok){
+        toast.error("لطفا خطا را بررسی کنید");
+        return;
+    }
+    toast.success("بریم مرحله بعدی")
+    onNext?.(getValues());
+}
+
   return(
   <form
     onSubmit={handleSubmit(onSubmit)}
@@ -62,6 +78,11 @@ const StepOne = () => {
         {...register("email")}
         error={errors.email}
       />
+
+<div>
+    <Button type="submit" variant="outline" onClick={validateAndNext}>بررسی و رفتن به مرحله بعدی</Button>
+</div>
+
     </div>
     <Button type="submit" loading={isSubmitting}>
       {isSubmitting ? "در حال ذخیره" : "ذخیره مرحله بعدی"}
