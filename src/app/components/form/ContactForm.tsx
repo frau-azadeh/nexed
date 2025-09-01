@@ -29,8 +29,8 @@ const ContactForm = () => {
   } = useForm<ContactFormValue>({
     resolver: zodResolver(ContactSchema),
     mode: "onTouched",
-      criteriaMode: "all",
-  shouldFocusError: true,
+    criteriaMode: "all",
+    shouldFocusError: true,
     defaultValues: {
       sendCopy: false,
       fullName: "",

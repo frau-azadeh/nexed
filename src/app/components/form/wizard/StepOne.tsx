@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const StepOne = () => {
-  return (
-    <div>StepOne</div>
-  )
-}
+  return <div>StepOne</div>;
+};
 
-export default StepOne
+export default StepOne;
