@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState } from "react";
 import StepOne from "../components/form/wizard/StepOne";
@@ -24,28 +24,26 @@ export default function Wizard() {
       )}
       {step === 1 && (
         <StepTwo
-          defaultValues={s2 ?? undefined} 
+          defaultValues={s2 ?? undefined}
           onBack={() => setStep(0)}
           onNext={(data: StepTwoFormValue) => {
-           setS2(data);
+            setS2(data);
             setStep(2);
           }}
         />
       )}
-{step === 2 && s1 && s2 &&(
-  <StepThree
-    step1={s1}
-    step2={s2}
-    onBack={()=>setStep(1)}
-    onSuccess={()=>{
-      setS1(null)
-      setS2(null)
-      setStep(0)
-    }}
-  />
-)}
-    
-
+      {step === 2 && s1 && s2 && (
+        <StepThree
+          step1={s1}
+          step2={s2}
+          onBack={() => setStep(1)}
+          onSuccess={() => {
+            setS1(null);
+            setS2(null);
+            setStep(0);
+          }}
+        />
+      )}
     </main>
   );
 }
