@@ -5,6 +5,7 @@ import StepOne from "../components/form/wizard/StepOne";
 import { StepOneFormValue } from "@/validation/cinema.stepone.schema";
 import { StepTwoFormValue } from "@/validation/cinema.steptwo.schema";
 import StepTwo from "../components/form/wizard/StepTwo";
+import StepThree from "../components/form/wizard/StepThree";
 
 export default function Wizard() {
   const [step, setStep] = useState<0 | 1 | 2>(0);
@@ -31,7 +32,18 @@ export default function Wizard() {
           }}
         />
       )}
-
+{step === 2 && s1 && s2 &&(
+  <StepThree
+    step1={s1}
+    step2={s2}
+    onBack={()=>setStep(1)}
+    onSuccess={()=>{
+      setS1(null)
+      setS2(null)
+      setStep(0)
+    }}
+  />
+)}
     
 
     </main>
