@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   StepOneFormValue,
@@ -12,10 +12,10 @@ import Input from "../../ui/Input";
 import Button from "../../ui/Button";
 
 type Props = {
-    onNext?: (data: StepOneFormValue) => void
-}
+  onNext?: (data: StepOneFormValue) => void;
+};
 
-const StepOne: React.FC<Props> = ({onNext}) => {
+const StepOne: React.FC<Props> = ({ onNext }) => {
   const {
     register,
     handleSubmit,
@@ -39,55 +39,57 @@ const StepOne: React.FC<Props> = ({onNext}) => {
       success: "مرحله اول ذخیره شد",
       error: "اتصال برقرار نشد",
     });
-    onNext?.(data)
+    onNext?.(data);
   };
 
-const validateAndNext = async ()=>{
+  const validateAndNext = async () => {
     const ok = await trigger();
-    if(!ok){
-        toast.error("لطفا خطا را بررسی کنید");
-        return;
+    if (!ok) {
+      toast.error("لطفا خطا را بررسی کنید");
+      return;
     }
-    toast.success("بریم مرحله بعدی")
+    toast.success("بریم مرحله بعدی");
     onNext?.(getValues());
-}
+  };
 
-  return(
-  <form
-    onSubmit={handleSubmit(onSubmit)}
-    className="mx-auto max-w-xl rounded-2xl bg-white/90 p-6 shadow-md"
-  >
-    <div className="mb-4">
-      <h3 className="text-lg font-bold">مرحله اول : اطلاعات تماس</h3>
-      <p className="text-sm text-gray-700">نام و ایمیل خود را وارد کنید</p>
-    </div>
+  return (
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="mx-auto max-w-xl rounded-2xl bg-white/90 p-6 shadow-md"
+    >
+      <div className="mb-4">
+        <h3 className="text-lg font-bold">مرحله اول : اطلاعات تماس</h3>
+        <p className="text-sm text-gray-700">نام و ایمیل خود را وارد کنید</p>
+      </div>
 
-    <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-      <Input
-        id="fullName"
-        label="نام و نام خانوادگی"
-        placeholder="نام و نام خانوادگی خود را وارد کنید"
-        {...register("fullName")}
-        error={errors.fullName}
-      />
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <Input
+          id="fullName"
+          label="نام و نام خانوادگی"
+          placeholder="نام و نام خانوادگی خود را وارد کنید"
+          {...register("fullName")}
+          error={errors.fullName}
+        />
 
-      <Input
-        id="email"
-        label="ایمیل"
-        placeholder="ایمیل خود را وارد کنید"
-        {...register("email")}
-        error={errors.email}
-      />
+        <Input
+          id="email"
+          label="ایمیل"
+          placeholder="ایمیل خود را وارد کنید"
+          {...register("email")}
+          error={errors.email}
+        />
 
-<div>
-    <Button type="submit" variant="outline" onClick={validateAndNext}>بررسی و رفتن به مرحله بعدی</Button>
-</div>
-
-    </div>
-    <Button type="submit" loading={isSubmitting}>
-      {isSubmitting ? "در حال ذخیره" : "ذخیره مرحله بعدی"}
-    </Button>
-  </form>
-  )}
+        <div>
+          <Button type="submit" variant="outline" onClick={validateAndNext}>
+            بررسی و رفتن به مرحله بعدی
+          </Button>
+        </div>
+      </div>
+      <Button type="submit" loading={isSubmitting}>
+        {isSubmitting ? "در حال ذخیره" : "ذخیره مرحله بعدی"}
+      </Button>
+    </form>
+  );
+};
 
 export default StepOne;
