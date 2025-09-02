@@ -39,7 +39,7 @@ type Props = {
   defaultValues?: Partial<StepTwoFormValue>;
 };
 
-const StepTwo: React.FC = ({ onNext, onBack, defaultValues }: Props) => {
+const StepTwo: React.FC<Props> = ({ onNext, onBack, defaultValues }) => {
   const {
     register,
     handleSubmit,
@@ -129,10 +129,10 @@ const StepTwo: React.FC = ({ onNext, onBack, defaultValues }: Props) => {
 
       <div>
         <Button type="button" variant="outline" onClick={onBack}>
-            قبلی
+          قبلی
         </Button>
         <Button type="button" onClick={validateAndNext} loading={isSubmitting}>
-            {isSubmitting ? "رفتن به مرحله بعدی" : "در حال بررسی ..."}
+          {isSubmitting ? "رفتن به مرحله بعدی" : "در حال بررسی ..."}
         </Button>
       </div>
     </form>
