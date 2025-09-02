@@ -5,5 +5,5 @@ export default function Wizard() {
     <div>
       <StepOne />
     </div>
-  )
+  );
 }
