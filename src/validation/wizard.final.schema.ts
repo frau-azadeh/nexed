@@ -1,9 +1,9 @@
 import { z } from "zod";
 
 export const FinalConfirmSchema = z.object({
-    accept: z
+  accept: z
     .boolean()
-    .refine((val)=>val === true,{message:"پذیرش قوانین الزامی است"}),
-})
+    .refine((val) => val === true, { message: "پذیرش قوانین الزامی است" }),
+});
 
-export type FinalConfirmFormValue = z.infer<typeof FinalConfirmSchema>
+export type FinalConfirmFormValue = z.infer<typeof FinalConfirmSchema>;
