@@ -5,11 +5,16 @@ import { useState } from "react";
 import StepOne from "../components/form/wizard2/StepOne";
 import { Step2FormValue } from "@/validation/wizard.step2.schema";
 import StepTwo from "../components/form/wizard2/StepTwo";
+import { Step3FormValue } from "@/validation/wizard.step3.schema";
+import StepThree from "../components/form/wizard2/StepThree";
+import StepFinal from "../components/form/wizard2/StepFinal";
 
 export default function Wizard2() {
   const [step, setStep] = useState<0 | 1 | 2 | 3>(0);
   const [s1, setS1] = useState<Step1FormValue | null>(null);
   const [s2, setS2] = useState<Step2FormValue | null>(null);
+  const [s3, setS3] = useState<Step3FormValue | null>(null);
+
   return (
     <main className="p-6">
       {step === 0 && (
@@ -28,6 +33,29 @@ export default function Wizard2() {
           onNext={(data: Step2FormValue) => {
             setS2(data);
             setStep(2);
+          }}
+        />
+      )}
+
+      {step === 2 && (
+        <StepThree
+          {...(s3 ? { defaultValues: s3 } : {})}
+          onBack={() => setStep(1)}
+          onNext={(data) => {
+            setS3(data);
+            setStep(3);
+          }}
+        />
+      )}
+
+      {step === 3 && s1 && s2 && s3 && (
+        <StepFinal
+          s1={s1}
+          s2={s2}
+          s3={s3}
+          onBack={() => setStep(2)}
+          onSubmitted={() => {
+            setStep(0);
           }}
         />
       )}
