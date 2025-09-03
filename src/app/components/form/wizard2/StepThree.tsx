@@ -122,13 +122,11 @@ const StepThree: React.FC<Props> = ({ onNext, onBack, defaultValues }) => {
         )}
       </div>
       <div className="mt-6 flex items-center gap-3">
-        <Button 
-            type="button" variant="outline" onClick={onBack}
-        >
-            قبلی
+        <Button type="button" variant="outline" onClick={onBack}>
+          قبلی
         </Button>
         <Button type="submit" loading={isSubmitting}>
-            {isSubmitting ? "در حال بررسی ...":"ادامه"}
+          {isSubmitting ? "در حال بررسی ..." : "ادامه"}
         </Button>
       </div>
     </form>
