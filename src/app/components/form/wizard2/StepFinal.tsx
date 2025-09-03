@@ -77,7 +77,7 @@ const StepFinal: React.FC<Props> = ({ onBack, onSubmitted, s1, s2, s3 }) => {
             <span>نام خانوادگی : {s2.lastName}</span>
           </li>
           <li>
-            <span>جنسیت : {s2.gender === "male" ? "زن" : "مرد"}</span>
+            <span>جنسیت : {s2.gender === "male" ? "مرد" : "زن"}</span>
           </li>
           {s2.gender === "male" && (
             <li>
@@ -97,18 +97,16 @@ const StepFinal: React.FC<Props> = ({ onBack, onSubmitted, s1, s2, s3 }) => {
       </section>
 
       <section className="rounded-xl border bg-gray-50/70 p-4">
-        <h4 className="mb-2 font-medium">مرحله 3 : وضعیت تاهل</h4>
-        <ul className="grid grid-col-1 gap-2 text-sm text-gray-700 md:grid-cols-2">
+        <h4 className="mb-2 font-semibold">مرحله ۳: وضعیت تأهل</h4>
+        <ul className="grid grid-cols-1 gap-2 text-sm text-gray-700 md:grid-cols-2">
           <li>
-            <span className="text-gray-500">
-              وضعیت {s3.maritalStatus === "married" ? "مجرد" : "متاهل"}
-            </span>
+            <span className="text-gray-500">وضعیت: </span>
+            {s3.maritalStatus === "married" ? "متأهل" : "مجرد"}
           </li>
           {s3.maritalStatus === "married" && (
             <li>
-              <span className="text-gray-500">
-                تعداد فرزند : {s3.childrenCount ?? 0}
-              </span>
+              <span className="text-gray-500">تعداد فرزند: </span>
+              {s3.childrenCount ?? 0}
             </li>
           )}
         </ul>
