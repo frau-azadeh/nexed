@@ -12,7 +12,7 @@ export const MiniStep2Schema = z
       .trim()
       .min(2, "حداقل دو کاراکتر"),
 
-    gender: z.enum(["male", "famale"], {
+    gender: z.enum(["male", "female"], {
       required_error: "جنسیت را انتخاب کنید",
     }),
 
@@ -28,7 +28,7 @@ export const MiniStep2Schema = z
       });
     }
 
-    if (val.gender === "famale" && val.militaryStatus) {
+    if (val.gender === "female" && val.militaryStatus) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
         path: ["militrayStatus"],

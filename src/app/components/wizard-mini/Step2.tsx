@@ -3,10 +3,8 @@ import {
   MiniStep2Schema,
 } from "@/validation/wizard-mini.step2";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { watch } from "fs";
 import React, { useEffect } from "react";
 import { Controller, SubmitErrorHandler, useForm } from "react-hook-form";
-import toast from "react-hot-toast";
 import Input from "../ui/Input";
 import Select from "../ui/Select";
 import Button from "../ui/Button";
@@ -41,7 +39,7 @@ const Step2: React.FC<Props> = ({ onBack, onNext, defaultValues }) => {
   const gender = watch("gender");
 
   useEffect(() => {
-    if (gender === "famale") {
+    if (gender === "female") {
       setValue("militaryStatus", undefined);
       void trigger("militaryStatus");
     }
@@ -105,7 +103,7 @@ const Step2: React.FC<Props> = ({ onBack, onNext, defaultValues }) => {
                     <input
                       type="radio"
                       value="female"
-                      checked={field.value === "famale"}
+                      checked={field.value === "female"}
                       onChange={() => field.onChange("female")}
                     />
                     زن
