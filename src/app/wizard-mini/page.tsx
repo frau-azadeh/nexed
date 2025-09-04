@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import Step1 from "../components/wizard-mini/Step1";
 
