@@ -1,9 +1,11 @@
 import { z } from "zod";
 
 export const MiniFinalSchema = z.object({
-    confirm: z
+  confirm: z
     .boolean()
-    .refine((val)=>val === true,{message: "برای ارسال نهایی باید تایید شود"})
-})
+    .refine((val) => val === true, {
+      message: "برای ارسال نهایی باید تایید شود",
+    }),
+});
 
-export type MIniFinalFormValue = z.infer<typeof MiniFinalSchema>
+export type MIniFinalFormValue = z.infer<typeof MiniFinalSchema>;
