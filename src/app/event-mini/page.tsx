@@ -5,6 +5,7 @@ import { useState } from "react";
 import Step1 from "../components/event-mini/Step1";
 import { EventMiniStep2FormValue } from "@/validation/event-mini.step2";
 import Step2 from "../components/event-mini/Step2";
+import Step3 from "../components/event-mini/Step3";
 
 export default function EventMiniWizard() {
   const [step, setStep] = useState<1 | 2 | 3>(1);
@@ -29,6 +30,19 @@ export default function EventMiniWizard() {
           onNext={(data)=>{
             setS2(data)
             setStep(3)
+          }}
+        />
+      )}
+
+      {step === 3 && s1 && s2 &&(
+        <Step3
+          s1={s1}
+          s2={s2}
+          onBack={()=> setStep(2)}
+          onDone={()=>{
+            setStep(1)
+            setS1(null)
+            setS2(null)
           }}
         />
       )}
