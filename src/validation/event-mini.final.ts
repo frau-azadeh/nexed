@@ -6,4 +6,4 @@ export const EventMiniFinalSchema = z.object({
     .refine((val)=> val === true,{message: "برای ارسال نهایی تایید کنید"}),
 })
 
-export type EventMiniFinalFormSchema  = z.infer<typeof EventMiniFinalSchema>
+export type EventMiniFinalFormValue  = z.infer<typeof EventMiniFinalSchema>
