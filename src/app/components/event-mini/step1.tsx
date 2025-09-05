@@ -14,7 +14,7 @@ type Props = {
   defaultValues?: Partial<EventMiniStep1FormValue>;
 };
 
-const step1: React.FC<Props> = ({ onNext, defaultValues }) => {
+const Step1: React.FC<Props> = ({ onNext, defaultValues }) => {
   const {
     register,
     handleSubmit,
@@ -67,4 +67,4 @@ const step1: React.FC<Props> = ({ onNext, defaultValues }) => {
   );
 };
 
-export default step1;
+export default Step1;

@@ -8,7 +8,9 @@ export const EventMiniStep2Schema = z
 
     city: z.string().trim().optional(),
 
-    platform: z.enum(["zoom", "meet"]).optional(),
+    platform: z
+      .enum(["zoom", "meet"], { message: "پلتفرم خود را مشخص کنید" })
+      .optional(),
   })
 
   .superRefine((val, ctx) => {
