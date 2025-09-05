@@ -9,10 +9,10 @@ export const EventMiniStep1Schema = z.object({
     .min(2, "حداقل 2 کاراکتر")
     .regex(faText, "نام و نام خانوادگی فارسی باید باشد"),
 
- email:z
-    .string({required_error:"ایمیل الزامی است"})
+  email: z
+    .string({ required_error: "ایمیل الزامی است" })
     .trim()
-    .email("ایمیل نامعتبر است")
+    .email("ایمیل نامعتبر است"),
 });
 
-export type EventMiniStep1FormValue = z.infer<typeof EventMiniStep1Schema>
+export type EventMiniStep1FormValue = z.infer<typeof EventMiniStep1Schema>;
