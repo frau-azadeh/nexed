@@ -59,8 +59,8 @@ const step1: React.FC<Props> = ({ onNext, defaultValues }) => {
         />
       </div>
       <div>
-        <Button type="button" loading={isSubmitting}>
-          {isSubmitting ? "مرحله بعدی" : "در حال بررسی ..."}
+        <Button type="submit" loading={isSubmitting}>
+          {isSubmitting ?   "در حال بررسی ..." :"مرحله بعدی" }
         </Button>
       </div>
     </form>
