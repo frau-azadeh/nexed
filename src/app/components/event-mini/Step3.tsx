@@ -1,48 +1,52 @@
-import { EventMiniFinalFormValue, EventMiniFinalSchema } from '@/validation/event-mini.final'
-import { EventMiniStep1FormValue } from '@/validation/event-mini.step1';
-import { EventMiniStep2FormValue } from '@/validation/event-mini.step2';
-import { zodResolver } from '@hookform/resolvers/zod';
-import React from 'react'
-import { Controller, useForm } from 'react-hook-form';
-import toast from 'react-hot-toast';
+import {
+  EventMiniFinalFormValue,
+  EventMiniFinalSchema,
+} from "@/validation/event-mini.final";
+import { EventMiniStep1FormValue } from "@/validation/event-mini.step1";
+import { EventMiniStep2FormValue } from "@/validation/event-mini.step2";
+import { zodResolver } from "@hookform/resolvers/zod";
+import React from "react";
+import { Controller, useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
-type Props={
-    s1: EventMiniStep1FormValue;
-    s2: EventMiniStep2FormValue;
-    onBack:()=> void;
-    onDone:()=> void;
-}
+type Props = {
+  s1: EventMiniStep1FormValue;
+  s2: EventMiniStep2FormValue;
+  onBack: () => void;
+  onDone: () => void;
+};
 
-const Step3:React.FC<Props> = ({s1, s2, onBack,onDone}) => {
-    const{
-        control,
-        handleSubmit,
-        formState:{errors, isSubmitting}
-    }=useForm<EventMiniFinalFormValue>({
-        resolver: zodResolver(EventMiniFinalSchema),
-        mode:"onTouched",
-        defaultValues: {confirm:false}
-    })
+const Step3: React.FC<Props> = ({ s1, s2, onBack, onDone }) => {
+  const {
+    control,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<EventMiniFinalFormValue>({
+    resolver: zodResolver(EventMiniFinalSchema),
+    mode: "onTouched",
+    defaultValues: { confirm: false },
+  });
 
-const submitRequest = (data: EventMiniFinalFormValue) =>
-    new Promise<EventMiniFinalFormValue>((resolve)=>{
-       setTimeout(()=>resolve(data),800)
-    })
+  const submitRequest = (data: EventMiniFinalFormValue) =>
+    new Promise<EventMiniFinalFormValue>((resolve) => {
+      setTimeout(() => resolve(data), 800);
+    });
 
-const onSubmit = async (data: EventMiniFinalFormValue)=>{
-    await toast.promise(submitRequest(data),{
-        loading: "در حال ارسال ...",
-        success:"ثبت نام انجام شد",
-        error:"ارسال ناموفق",
-    })
+  const onSubmit = async (data: EventMiniFinalFormValue) => {
+    await toast.promise(submitRequest(data), {
+      loading: "در حال ارسال ...",
+      success: "ثبت نام انجام شد",
+      error: "ارسال ناموفق",
+    });
     onDone();
-}
+  };
 
   return (
-   <form onSubmit={handleSubmit(onSubmit)}
-    className='mx-auto max-w-md rounded-2xl bg-white/90 p-6 shadow-md'
-   >
-     <h3 className="mb-3 text-lg font-bold">مرحله ۳: مرور و تأیید</h3>
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="mx-auto max-w-md rounded-2xl bg-white/90 p-6 shadow-md"
+    >
+      <h3 className="mb-3 text-lg font-bold">مرحله ۳: مرور و تأیید</h3>
 
       {/* خلاصه اطلاعات */}
       <div className="space-y-3 text-sm text-gray-700">
@@ -99,9 +103,8 @@ const onSubmit = async (data: EventMiniFinalFormValue)=>{
           {isSubmitting ? "در حال ارسال…" : "ارسال نهایی"}
         </button>
       </div>
+    </form>
+  );
+};
 
-   </form>
-  )
-}
-
-export default Step3
+export default Step3;
