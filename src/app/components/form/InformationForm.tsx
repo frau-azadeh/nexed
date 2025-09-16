@@ -1,15 +1,19 @@
 "use client";
-import {
-  type informationFormValue,
-  InformationSchema,
-} from "@/validation/information.schema";
+
 import React from "react";
-import { useForm } from "react-hook-form";
+
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+
+import {
+  InformationSchema,
+  type informationFormValue,
+} from "@/validation/information.schema";
+import toast from "react-hot-toast";
+
+import Button from "../ui/Button";
 import Input from "../ui/Input";
 import Select from "../ui/Select";
-import Button from "../ui/Button";
-import toast from "react-hot-toast";
 
 const maritalOptions = [
   { label: "مجرد", value: "single" },

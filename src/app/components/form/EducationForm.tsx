@@ -1,17 +1,20 @@
 "use client";
 
+import React from "react";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+
 import {
   EducationFormValue,
   EducationSchema,
 } from "@/validation/education.schema";
-import { zodResolver } from "@hookform/resolvers/zod";
-import React from "react";
-import { useForm } from "react-hook-form";
-import Select from "../ui/Select";
-import Input from "../ui/Input";
-import TextArea from "../ui/TextArea";
-import Button from "../ui/Button";
 import toast from "react-hot-toast";
+
+import Button from "../ui/Button";
+import Input from "../ui/Input";
+import Select from "../ui/Select";
+import TextArea from "../ui/TextArea";
 
 const degreeOptions = [
   { label: "دیپلم", value: "diploma" },

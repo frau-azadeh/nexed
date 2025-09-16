@@ -1,20 +1,23 @@
+import React from "react";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  Controller,
+  type SubmitErrorHandler,
+  type SubmitHandler,
+  useForm,
+} from "react-hook-form";
+
 import { StepOneFormValue } from "@/validation/cinema.stepone.schema";
 import {
   StepThreeFormValue,
   StepThreeSchema,
 } from "@/validation/cinema.stepthree.schema";
 import { StepTwoFormValue } from "@/validation/cinema.steptwo.schema";
-import React from "react";
-import {
-  Controller,
-  useForm,
-  type SubmitHandler,
-  type SubmitErrorHandler,
-} from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import toast from "react-hot-toast";
-import Toggle from "../../ui/Toggle";
+
 import Button from "../../ui/Button";
+import Toggle from "../../ui/Toggle";
 
 const PRICE: Record<"normal" | "vip", number> = {
   normal: 250_000,

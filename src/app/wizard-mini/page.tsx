@@ -2,12 +2,15 @@
 "use client";
 
 import { useState } from "react";
-import { Toaster } from "react-hot-toast";
+
 import Step1 from "@/app/components/wizard-mini/Step1";
 import Step2 from "@/app/components/wizard-mini/Step2";
 import Step3 from "@/app/components/wizard-mini/Step3";
-import type { MiniStep1FormValue } from "@/validation/wizard.mini.step1";
 import type { MiniStep2FormValue } from "@/validation/wizard-mini.step2";
+import type { MiniStep1FormValue } from "@/validation/wizard.mini.step1";
+import { Toaster } from "react-hot-toast";
+
+// src/app/wizard-mini/page.tsx
 
 export default function WizardMini() {
   const [step, setStep] = useState<1 | 2 | 3>(1);

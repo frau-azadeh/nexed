@@ -1,15 +1,18 @@
+import React, { useMemo } from "react";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+
 import { StepOneFormValue } from "@/validation/cinema.stepone.schema";
 import {
   StepTwoFormValue,
   StepTwoSchema,
 } from "@/validation/cinema.steptwo.schema";
-import { zodResolver } from "@hookform/resolvers/zod";
-import React, { useMemo } from "react";
-import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import Select from "../../ui/Select";
+
 import Button from "../../ui/Button";
 import Input from "../../ui/Input";
+import Select from "../../ui/Select";
 
 const movieOptions = [
   { label: "Dune 2", value: "dune2" },

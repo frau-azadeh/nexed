@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
-import "./globals.css";
-import "../styles/fonts.css";
+
 import ToastProvider from "./provider/ToastProvider";
+
+import "../styles/fonts.css";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "دختران ایران زمین",

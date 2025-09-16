@@ -1,8 +1,12 @@
 "use client";
-import clsx from "clsx";
-import { Eye, EyeOff } from "lucide-react";
-import React, { forwardRef, InputHTMLAttributes, useState } from "react";
+
+import React, { InputHTMLAttributes, forwardRef, useState } from "react";
+
 import { FieldError } from "react-hook-form";
+
+import clsx from "clsx";
+
+import { Eye, EyeOff } from "lucide-react";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;

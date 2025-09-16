@@ -1,3 +1,8 @@
+import React from "react";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Controller, SubmitErrorHandler, useForm } from "react-hook-form";
+
 import {
   FinalConfirmFormValue,
   FinalConfirmSchema,
@@ -5,10 +10,8 @@ import {
 import { Step1FormValue } from "@/validation/wizard.step1.schema";
 import { Step2FormValue } from "@/validation/wizard.step2.schema";
 import { Step3FormValue } from "@/validation/wizard.step3.schema";
-import { zodResolver } from "@hookform/resolvers/zod";
-import React from "react";
-import { Controller, SubmitErrorHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+
 import Button from "../../ui/Button";
 
 type Props = {

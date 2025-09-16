@@ -1,13 +1,16 @@
+import React, { useEffect } from "react";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Controller, SubmitErrorHandler, useForm } from "react-hook-form";
+
 import {
   MiniStep2FormValue,
   MiniStep2Schema,
 } from "@/validation/wizard-mini.step2";
-import { zodResolver } from "@hookform/resolvers/zod";
-import React, { useEffect } from "react";
-import { Controller, SubmitErrorHandler, useForm } from "react-hook-form";
+
+import Button from "../ui/Button";
 import Input from "../ui/Input";
 import Select from "../ui/Select";
-import Button from "../ui/Button";
 
 type Props = {
   onBack: () => void;

@@ -1,14 +1,17 @@
 "use client";
 
-import { JobFormValue, JobSchema } from "@/validation/job.schema";
-import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
+
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+
+import { JobFormValue, JobSchema } from "@/validation/job.schema";
+import toast from "react-hot-toast";
+
+import Button from "../ui/Button";
 import Input from "../ui/Input";
 import Select from "../ui/Select";
 import TextArea from "../ui/TextArea";
-import Button from "../ui/Button";
-import toast from "react-hot-toast";
 
 const employmentOptions = [
   { label: "تمام‌وقت", value: "full_time" },

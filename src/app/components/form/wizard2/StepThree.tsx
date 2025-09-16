@@ -1,10 +1,13 @@
-import { Step3FormValue, Step3Schema } from "@/validation/wizard.step3.schema";
-import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useEffect } from "react";
+
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, SubmitErrorHandler, useForm } from "react-hook-form";
+
+import { Step3FormValue, Step3Schema } from "@/validation/wizard.step3.schema";
 import toast from "react-hot-toast";
-import Input from "../../ui/Input";
+
 import Button from "../../ui/Button";
+import Input from "../../ui/Input";
 
 type Props = {
   onNext?: (data: Step3FormValue) => void;
