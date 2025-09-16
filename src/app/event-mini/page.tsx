@@ -1,9 +1,11 @@
 "use client";
 
-import { EventMiniStep1FormValue } from "@/validation/event-mini.step1";
 import { useState } from "react";
-import Step1 from "../components/event-mini/Step1";
+
+import { EventMiniStep1FormValue } from "@/validation/event-mini.step1";
 import { EventMiniStep2FormValue } from "@/validation/event-mini.step2";
+
+import Step1 from "../components/event-mini/Step1";
 import Step2 from "../components/event-mini/Step2";
 import Step3 from "../components/event-mini/Step3";
 

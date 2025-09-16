@@ -1,13 +1,16 @@
+import React from "react";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { SubmitErrorHandler, useForm } from "react-hook-form";
+
 import {
   EventMiniStep1FormValue,
   EventMiniStep1Schema,
 } from "@/validation/event-mini.step1";
-import { zodResolver } from "@hookform/resolvers/zod";
-import React from "react";
-import { SubmitErrorHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import Input from "../ui/Input";
+
 import Button from "../ui/Button";
+import Input from "../ui/Input";
 
 type Props = {
   onNext: (data: EventMiniStep1FormValue) => void;

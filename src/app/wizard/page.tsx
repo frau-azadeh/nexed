@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import StepOne from "../components/form/wizard/StepOne";
+
 import { StepOneFormValue } from "@/validation/cinema.stepone.schema";
 import { StepTwoFormValue } from "@/validation/cinema.steptwo.schema";
-import StepTwo from "../components/form/wizard/StepTwo";
+
+import StepOne from "../components/form/wizard/StepOne";
 import StepThree from "../components/form/wizard/StepThree";
+import StepTwo from "../components/form/wizard/StepTwo";
 
 export default function Wizard() {
   const [step, setStep] = useState<0 | 1 | 2>(0);

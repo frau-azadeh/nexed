@@ -1,6 +1,8 @@
-import clsx from "clsx";
-import React, { forwardRef, SelectHTMLAttributes } from "react";
+import React, { SelectHTMLAttributes, forwardRef } from "react";
+
 import { FieldError } from "react-hook-form";
+
+import clsx from "clsx";
 
 interface Option {
   label: string;

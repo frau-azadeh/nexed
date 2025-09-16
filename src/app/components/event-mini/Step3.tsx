@@ -1,12 +1,14 @@
+import React from "react";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Controller, useForm } from "react-hook-form";
+
 import {
   EventMiniFinalFormValue,
   EventMiniFinalSchema,
 } from "@/validation/event-mini.final";
 import { EventMiniStep1FormValue } from "@/validation/event-mini.step1";
 import { EventMiniStep2FormValue } from "@/validation/event-mini.step2";
-import { zodResolver } from "@hookform/resolvers/zod";
-import React from "react";
-import { Controller, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
 type Props = {

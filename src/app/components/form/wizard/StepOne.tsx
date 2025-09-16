@@ -1,15 +1,18 @@
 "use client";
 
+import React from "react";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+
 import {
   StepOneFormValue,
   StepOneSchema,
 } from "@/validation/cinema.stepone.schema";
-import { zodResolver } from "@hookform/resolvers/zod";
-import React from "react";
-import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import Input from "../../ui/Input";
+
 import Button from "../../ui/Button";
+import Input from "../../ui/Input";
 
 type Props = {
   onNext?: (data: StepOneFormValue) => void;

@@ -1,14 +1,17 @@
+import React from "react";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Controller, useForm } from "react-hook-form";
+import { date } from "zod";
+
 import {
   MIniFinalFormValue,
   MiniFinalSchema,
 } from "@/validation/wizard-mini.final";
 import { MiniStep2FormValue } from "@/validation/wizard-mini.step2";
 import { MiniStep1FormValue } from "@/validation/wizard.mini.step1";
-import { zodResolver } from "@hookform/resolvers/zod";
-import React from "react";
-import { Controller, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { date } from "zod";
+
 import Button from "../ui/Button";
 
 type Props = {

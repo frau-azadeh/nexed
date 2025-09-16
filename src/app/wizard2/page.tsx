@@ -1,13 +1,15 @@
 "use client";
 
-import { Step1FormValue } from "@/validation/wizard.step1.schema";
 import { useState } from "react";
-import StepOne from "../components/form/wizard2/StepOne";
+
+import { Step1FormValue } from "@/validation/wizard.step1.schema";
 import { Step2FormValue } from "@/validation/wizard.step2.schema";
-import StepTwo from "../components/form/wizard2/StepTwo";
 import { Step3FormValue } from "@/validation/wizard.step3.schema";
-import StepThree from "../components/form/wizard2/StepThree";
+
 import StepFinal from "../components/form/wizard2/StepFinal";
+import StepOne from "../components/form/wizard2/StepOne";
+import StepThree from "../components/form/wizard2/StepThree";
+import StepTwo from "../components/form/wizard2/StepTwo";
 
 export default function Wizard2() {
   const [step, setStep] = useState<0 | 1 | 2 | 3>(0);

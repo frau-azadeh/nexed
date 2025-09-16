@@ -1,6 +1,8 @@
-import clsx from "clsx";
-import React, { forwardRef, TextareaHTMLAttributes } from "react";
+import React, { TextareaHTMLAttributes, forwardRef } from "react";
+
 import { FieldError } from "react-hook-form";
+
+import clsx from "clsx";
 
 interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string;
